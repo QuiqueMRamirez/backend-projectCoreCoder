@@ -1,11 +1,11 @@
-const pgdb = require('../util/postgre-database');
+import { query } from '../util/postgre-database';
 
 const User = {};
 
 User.create = (data) => {
   const bindings = [...data];
-  const SQL_CREATE_USER = `INSERT INTO USUARIO(USUARIO, CORREO) VALUES ($1, $2)`;
-  return pgdb.query(SQL_CREATE_USER, bindings);
+  const SQL_CREATE_USER = `INSERT INTO USER(firstname, lastname, email, celular, gender, city, password) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+  return query(SQL_CREATE_USER, bindings);
 }
 
-module.exports = User;
+export default User;
